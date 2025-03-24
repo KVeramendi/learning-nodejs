@@ -6,7 +6,6 @@ const { PORT } = require('./config.js');
 
 server.use(express.static('./public'));
 server.use(express.json());
-// server.use(express.urlencoded({ extended: false }));
 server.use('/', HomeRoute);
 server.use('/', QuotesRoute);
 server.use(NotFoundMiddleware);
