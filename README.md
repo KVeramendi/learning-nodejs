@@ -9,7 +9,6 @@ Cada carpeta representa una sección del curso y contiene proyectos o ejercicios
 ## 🛠️ Tecnologías
 - Node.js
 - Angular (en algunos proyectos)
-- Módulos nativos
 - Express.js (en algunos proyectos)
 - axios (en algunos proyectos)
 - sequelize (en algunos proyectos)
@@ -17,3 +16,4 @@ Cada carpeta representa una sección del curso y contiene proyectos o ejercicios
 - cheerio (en algunos proyectos)
 - dotenv (en algunos proyectos)
 - mongoose (en algunos proyectos)
+- Bootstrap (en algunos proyectos)
