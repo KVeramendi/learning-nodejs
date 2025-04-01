@@ -8,6 +8,7 @@ Cada carpeta representa una sección del curso y contiene proyectos o ejercicios
 
 ## 🛠️ Tecnologías
 - Node.js
+- Angular (en algunos proyectos)
 - Módulos nativos
 - Express.js (en algunos proyectos)
 - axios (en algunos proyectos)
