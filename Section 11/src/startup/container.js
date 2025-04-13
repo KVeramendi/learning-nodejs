@@ -3,11 +3,11 @@ const { createContainer, asClass, asValue, asFunction } = require('awilix');
 const config = require('../config');
 const app = require('.');
 // services
-const { HomeService, UserService, IdeaService, CommentService } = require('../services');
+const { HomeService, UserService, IdeaService, CommentService, AuthService } = require('../services');
 // controllers
-const { HomeController, UserController, IdeaController, CommentController } = require('../controllers');
+const { HomeController, UserController, IdeaController, CommentController, AuthController } = require('../controllers');
 // routes
-const { HomeRoute, UserRoute, IdeaRoute, CommentRoute } = require('../routes/index.route');
+const { HomeRoute, UserRoute, IdeaRoute, CommentRoute, AuthRoute } = require('../routes/index.route');
 const Routes = require('../routes');
 // models
 const { User, Idea, Comment } = require('../models');
@@ -25,19 +25,22 @@ container
         HomeService: asClass(HomeService).singleton(),
         UserService: asClass(UserService).singleton(),
         IdeaService: asClass(IdeaService).singleton(),
-        CommentService: asClass(CommentService).singleton()
+        CommentService: asClass(CommentService).singleton(),
+        AuthService: asClass(AuthService).singleton()
     })
     .register({
         HomeController: asClass(HomeController.bind(HomeController)).singleton(),
         UserController: asClass(UserController.bind(UserController)).singleton(),
         IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
-        CommentController: asClass(CommentController.bind(CommentController)).singleton()
+        CommentController: asClass(CommentController.bind(CommentController)).singleton(),
+        AuthController: asClass(AuthController.bind(AuthController)).singleton()
     })
     .register({
         HomeRoute: asFunction(HomeRoute).singleton(),
         UserRoute: asFunction(UserRoute).singleton(),
         IdeaRoute: asFunction(IdeaRoute).singleton(),
-        CommentRoute: asFunction(CommentRoute).singleton()
+        CommentRoute: asFunction(CommentRoute).singleton(),
+        AuthRoute: asFunction(AuthRoute).singleton()
     })
     .register({
         User: asValue(User),
