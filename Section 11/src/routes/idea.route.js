@@ -1,8 +1,10 @@
 const { Router } = require('express');
+const { ParseInMiddleware, CacheMiddleware } = require('../middlewares');
+const { CacheTimeHelper } = require('../helpers');
 
 module.exports = function ({ IdeaController }) {
     const router = Router();
-    router.get('', IdeaController.getAll);
+    router.get('', [ParseInMiddleware, CacheMiddleware(CacheTimeHelper.ONE_HOUR)], IdeaController.getAll);
     router.get('/:ideaId', IdeaController.get);
     router.get('/:userId/all', IdeaController.getUserIdeas);
     router.post('', IdeaController.create);
