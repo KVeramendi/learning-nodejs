@@ -31,8 +31,26 @@ class IdeaService extends BaseService {
             error.message = 'idea does not found';
             throw error;
         }
-        idrea.upvoteIdea.push(true);
+        idea.upvoteIdea.push(true);
         return await _ideaRepository.update(ideaId, { upvotes, downvotes });
+    }
+
+    async downvoteIdea(ideaId) {
+        if (!ideaId) {
+            const error = new Error();
+            error.status = 400;
+            error.message = 'ideaId must be sent';
+            throw error;
+        }
+        const idea = await _ideaRepository.get(ideaId);
+        if (!idea) {
+            const error = new Error();
+            error.status = 404;
+            error.message = 'idea does not found';
+            throw error;
+        }
+        idea.downvotes.push(true);
+        return await _ideaRepository.update(ideaId, { downvotes, downvotes });
     }
 }
 

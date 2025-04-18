@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { ParseInMiddleware, CacheMiddleware } = require('../middlewares');
+const { ParseInMiddleware, AuthMiddleware, CacheMiddleware } = require('../middlewares');
 const { CacheTimeHelper } = require('../helpers');
 
 module.exports = function ({ IdeaController }) {
@@ -7,10 +7,10 @@ module.exports = function ({ IdeaController }) {
     router.get('', [ParseInMiddleware, CacheMiddleware(CacheTimeHelper.ONE_HOUR)], IdeaController.getAll);
     router.get('/:ideaId', IdeaController.get);
     router.get('/:userId/all', IdeaController.getUserIdeas);
-    router.post('', IdeaController.create);
-    router.patch('/:ideaId', IdeaController.update);
-    router.delete('/:ideaId', IdeaController.delete);
-    router.post(':ideaId/upvote', IdeaController.upvoteIdea);
-    router.post(':ideaId/downvote', IdeaController.downvoteIdea);
+    router.post('', AuthMiddleware, IdeaController.create);
+    router.patch('/:ideaId', AuthMiddleware, IdeaController.update);
+    router.delete('/:ideaId', AuthMiddleware, IdeaController.delete);
+    router.post('/:ideaId/upvote', AuthMiddleware, IdeaController.upvoteIdea);
+    router.post('/:ideaId/downvote', AuthMiddleware, IdeaController.downvoteIdea);
     return router;
 }
