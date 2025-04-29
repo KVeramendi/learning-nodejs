@@ -17,3 +17,4 @@ Cada carpeta representa una sección del curso y contiene proyectos o ejercicios
 - dotenv (en algunos proyectos)
 - mongoose (en algunos proyectos)
 - Bootstrap (en algunos proyectos)
+- Docker (en algunos proyectos)
